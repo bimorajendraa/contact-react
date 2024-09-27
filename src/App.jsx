@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import './App.css';
 
 const App = () => {
@@ -15,47 +14,79 @@ const App = () => {
     fetchContacts();
   }, []);
 
+  // Fetch all contacts
   const fetchContacts = async () => {
     try {
-      const response = await axios.get(`${baseURL}/contacts`, {
-        headers: { Authorization: `Bearer ${token}` }
+      const response = await fetch(`${baseURL}/contacts`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
       });
-      setContacts(response.data.data);
+
+      const data = await response.json();
+      if (data.success) {
+        setContacts(data.data);
+      } else {
+        console.error('Failed to fetch contacts');
+      }
     } catch (error) {
       console.error("Error fetching contacts:", error);
     }
   };
 
+  // Add new contact
   const addContact = async () => {
     if (!name || !email || !imgUrl) {
       alert('All fields are required!');
       return;
     }
 
+    const newContact = {
+      name: name,
+      email: email,
+      img_url: imgUrl
+    };
+
     try {
-      await axios.post(`${baseURL}/contacts/new`, {
-        name,
-        email,
-        img_url: imgUrl
-      }, {
-        headers: { Authorization: `Bearer ${token}` }
+      const response = await fetch(`${baseURL}/contacts/new`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newContact)
       });
 
-      setName('');
-      setEmail('');
-      setImgUrl('');
-      fetchContacts();
+      const data = await response.json();
+      if (data.success) {
+        setName('');
+        setEmail('');
+        setImgUrl('');
+        fetchContacts();
+      } else {
+        console.error('Failed to add contact');
+      }
     } catch (error) {
       console.error("Error adding contact:", error);
     }
   };
 
+  // Delete contact by id
   const deleteContact = async (id) => {
     try {
-      await axios.delete(`${baseURL}/contacts/${id}`, {
-        headers: { Authorization: `Bearer ${token}` }
+      const response = await fetch(`${baseURL}/contacts/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
       });
-      fetchContacts();
+
+      const data = await response.json();
+      if (data.success) {
+        fetchContacts();
+      } else {
+        console.error('Failed to delete contact');
+      }
     } catch (error) {
       console.error("Error deleting contact:", error);
     }

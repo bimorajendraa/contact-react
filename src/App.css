@@ -1,95 +1,155 @@
-body {
-  background-color: #f4f4f9;
-  font-family: "Inter", sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
 }
 
-.main_container {
-  display: flex;
-  flex-direction: column;
-  margin: 40px auto;
-  background-color: white;
-  max-width: 800px;
-  box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.1);
-  border-radius: 16px;
-  padding: 20px;
+body{
+    background-color:#f4f4f9; ;
 }
 
-.main_container-heading {
-  text-align: center;
-  font-size: 42px;
-  font-weight: 600;
+.main_container{
+    display: flex;
+    flex-direction: column;
+    margin: 40px auto;
+    background-color: white;
+    max-width: 800px;
+    box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.1);
+    border-radius: 16px;
+    padding: 20px; 
 }
 
-.container_add_contact {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+.main_container-heading{
+    margin-top: 10px;
+    text-align: center;
+    font-size: 42px;
+    font-weight: 600;
 }
 
-.form {
-  padding: 12px;
-  border-radius: 6px;
-  border: 1px solid #cccccc;
+.main_container_add_contact{
+    display: flex;
+    flex-direction: column;;
 }
 
-.button1 {
-  padding: 12px;
-  background-color: #007bff;
-  color: white;
-  border-radius: 6px;
-  border: none;
-  transition: background-color 0.3s ease;
+.container_add_contact{
+    display: flex;
+    flex-direction: column;
+    margin-top: 18px;
+    padding: 20px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+    border-radius: 16px;
+    border-radius: 10px;
+    gap: 15px;
 }
 
-.button1:hover {
-  background-color: #0056b3;
+.form{
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    padding: 12px;
+    font-family: "Inter", sans-serif;
+}
+
+.button1{
+    border: 0px;
+    padding: 12px;
+    border-radius: 6px;
+    font-family: "Inter", sans-serif;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.button1:hover{
+    background-color: #0056b3;
+}
+
+.button2{
+    font-family: "Inter", sans-serif;
+    margin-left: auto;
+    width: 35px;
+    height: 35px;
+    color: white;
+    background-color: red;
+    border: 0px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.button2:hover{
+    background-color: #a02121;
+}
+
+.user-image{
+    width: 64px;
+    height: 64px;
+}
+
+.contact{
+    margin-top: 20px;
+}
+
+.main_container_contact_list{
+    margin-top: 20px;
 }
 
 .contact_card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px; /* Tambah padding */
+    background-color: #ffffff;
+    border-radius: 10px; /* Penambahan border radius */
+    margin-bottom: 15px; /* Tambah jarak antar kartu */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Tambah shadow */
+    transition: box-shadow 0.3s ease; /* Tambahkan animasi pada shadow */
 }
 
 .contact_card:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Efek shadow saat hover */
+}
+
+.contact_card img {
+    border-radius: 50%;
+    width: 50px; /* Sesuaikan ukuran gambar */
+    height: 50px;
+    margin-right: 15px; /* Tambah margin */
 }
 
 .contact_info {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
+    flex: 1; /* Agar informasi teks memenuhi ruang yang tersedia */
 }
 
 .contact_info_text {
-  margin-left: 10px;
+    margin-left: 10px;
 }
 
 .contact_info_text h3 {
-  font-size: 18px;
-  font-weight: 600;
-  margin: 0;
+    margin: 0;
+    font-size: 18px; /* Perbesar ukuran font */
+    font-weight: 600; /* Tambah tebal font */
+    color: #333;
 }
 
 .contact_info_text p {
-  color: #777;
+    margin: 0;
+    color: #777;
 }
 
 .delete_button {
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 8px 12px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px; /* Tambah padding */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .delete_button:hover {
-  background-color: #d9534f;
+    background-color: #d9534f; /* Warna lebih gelap saat hover */
 }
